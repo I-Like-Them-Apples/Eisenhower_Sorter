@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eisenhower Matrix Sorter</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="/manifest.json">
+</head>
+<body>
+  <h1>Eisenhower Matrix Sorter</h1>
+  <div id="view-container">
+  <div class="view" id="view-1">
+  <textarea id="goal-input"></textarea>
+  <button id="load-goals-button">Load Goals</button>
+  </div>
+  <div class="view" id="view-2">
+  <table id="goal-list">
+    <thead>
+      <tr>
+        <th>Goal</th>
+        <th>Important</th>
+        <th>Urgent</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <button id="prioritize-goals-button">Prioritize Goals</button>
+  </div>
+
+
+  <div class="view" id="view-3">
+  <table id="goal-matrix">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Urgent</th>
+        <th>Not Urgent</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Important</th>
+        <td id="urgent-important"></td>
+        <td id="not-urgent-important"></td>
+      </tr>
+      <tr>
+        <th>Not Important</th>
+        <td id="urgent-not-important"></td>
+        <td id="not-urgent-not-important"></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="view" id="view-4">
+  <textarea id="prioritized-goals" readonly></textarea>
+  <button id="copy-to-clipboard-button">Copy to Clipboard</button>
+  </div>
+  <div class="view" id="view-5">
+    <div style="text-align:left;font-size:1.2rem;max-width:500px;margin:auto;overflow:auto;">
+    <p>  It was a dark and stormy night, and productivity was nowhere to be found. But fear not, my fellow workers, for there is a tool that can banish the demons of procrastination and inefficiency from your mind: the Eisenhower Matrix. It's a simple yet powerful method for prioritizing tasks based on their urgency and importance. Here's how you can use it to conquer your to-do list and reign supreme over your workday:
+
+    <p>First, draw a square divided into four quadrants. Label the top left quadrant "urgent and important," the top right quadrant "important but not urgent," the bottom left quadrant "urgent but not important," and the bottom right quadrant "not urgent and not important." Next, list your tasks in each quadrant according to their priority. The tasks in the top left quadrant should be tackled first, followed by those in the top right quadrant, then the bottom left quadrant, and finally the bottom right quadrant.
+
+    <p>By using the Eisenhower Matrix, you'll be able to focus on the tasks that truly matter and eliminate the distractions that can derail your productivity. So don't be afraid to embrace the power of this simple tool and let it guide you towards the productivity promised land.
+        </ul>
+    </div>
+  </div>
+
+
+
+</div>
+<div class="button-container">
+  <button id="prev-button">Previous</button>
+  <button id="clear-data-button">Clear Data</button>
+  <button id="next-button">Next</button>
+</div>
+
+  <script src="goal_prioritizer.js"></script>
+  <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(registration => {
+          console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch(err => {
+          console.error('Service Worker registration failed:', err);
+        });
+    });
+  }
+</script>
+
+</body>
+</html>
